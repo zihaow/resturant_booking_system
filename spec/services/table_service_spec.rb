@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 RSpec.describe TableService do
   describe 'test TableService' do
     let!(:resturant) { create(:resturant) }
 
-    subject {
+    subject do
       TableService.new(
         resturant.from,
         resturant.to,
         resturant.max_allow_duration
       ).slots
-    }
+    end
 
     it 'returns an array of time slots' do
       expect(subject).to be_an_instance_of(Array)

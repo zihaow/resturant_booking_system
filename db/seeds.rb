@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 rake_tasks = [
   'initialized:create_default',
 ]

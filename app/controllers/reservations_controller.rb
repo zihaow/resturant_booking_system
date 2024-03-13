@@ -1,12 +1,7 @@
+# frozen_string_literal: true
+
 class ReservationsController < ApplicationController
   def reserve
-    command = TableReserve.call(reserve_params)
-    return render head: :ok if command.success?
-
-    render json: command.errors, status: 400
-  end
-
-  def list_occupied
     command = TableReserve.call(reserve_params)
     return render head: :ok if command.success?
 

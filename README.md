@@ -56,6 +56,24 @@ To run rspec test suites
 bundle exec rspec
 ```
 
+To run rubocop test
+```
+bundle exec rubocop
+```
+
+To run reek test
+```
+bundle exec reek
+```
+
+To run rails best practices test suite
+```
+rails_best_practices .
+```
+
+Bullet
+`Bullet gem is enabled for checking potiential performance issues`
+
 To enter rails console to see the activerecord objects:
 ```
 rails c

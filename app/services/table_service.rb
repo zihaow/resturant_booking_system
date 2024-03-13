@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TableService
   def initialize(start_time, end_time, max_allowed_duration)
     @start_time = start_time
@@ -5,18 +7,19 @@ class TableService
     @max_allowed_duration = max_allowed_duration
   end
 
-  attr_accessor :start_time, :end_time, :max_allowed_duration
+  attr_reader :start_time, :end_time, :max_allowed_duration
 
   # return all available booking spots if none is booked.
   def slots
     output = []
-    
+
     hours.each_with_index do |hour, index|
       j = index + 1
 
+      next_hour = hours[j]
       # going through an array of hours of operation for a resturant
-      while j < hours.length && hours[j] - hour <= max_allowed_duration
-        output << [hour, hours[j]] if hour != hours[j]
+      while j < hours.length && next_hour - hour <= max_allowed_duration
+        output << [hour, next_hour] if hour != next_hour
         j += 1
       end
     end
@@ -31,7 +34,7 @@ class TableService
     res = []
 
     (end_time - start_time + 1).times do |index|
-      res << start_time + index
+      res << (start_time + index)
     end
 
     res

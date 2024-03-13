@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TableReserve
   prepend SimpleCommand
 
@@ -11,13 +13,13 @@ class TableReserve
     find_available_and_book
   end
 
-  attr_accessor :payload
+  attr_reader :payload
 
   private
 
   def find_available_and_book
     return errors.add(:error, 'No available tables') unless tables.present?
-    
+
     book_reservation
   end
 
@@ -31,7 +33,7 @@ class TableReserve
   end
 
   def book(table)
-    reservation = Reservation.create!(
+    Reservation.create!(
       start_time: user_chosen_time,
       duration: payload[:duration],
       party_size: payload[:party_size],
@@ -51,7 +53,7 @@ class TableReserve
   end
 
   def tables
-    @tables ||= resturant.available_tables(date).where("size >= ?", payload[:party_size])
+    @tables ||= resturant.available_tables(date).where('size >= ?', payload[:party_size])
   end
 
   # TODO: use Time.now instead of Time.zone.now for

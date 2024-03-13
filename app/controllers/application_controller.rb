@@ -1,5 +1,7 @@
-class ApplicationController < ActionController::API
-	# before_action :validate_jwt, only: %I[reserve]
+# frozen_string_literal: true
 
-	respond_to :json
+class ApplicationController < ActionController::API
+  # before_action :validate_jwt, only: %I[reserve]
+
+  respond_to :json
 end

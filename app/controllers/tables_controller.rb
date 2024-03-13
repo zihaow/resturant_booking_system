@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TablesController < ApplicationController
   def list
     reserved_slots = Table.reservations_on_time(time)

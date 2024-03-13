@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class ReserveService
   def initialize(table, date)
     @table = table
     @date = date
   end
 
-  attr_accessor :table, :date
+  attr_reader :table, :date
 
   def available_slots
     slots = all_slots
@@ -17,11 +19,11 @@ class ReserveService
   private
 
   def remaining_slots(slots, from, to)
-      output = []
-      slots.each do |set|
-        output << set if set.last <= from || set.first >= to
-      end
-      output
+    output = []
+    slots.each do |set|
+      output << set if set.last <= from || set.first >= to
+    end
+    output
   end
 
   def reserved_slots

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Table, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:resturant) }
@@ -9,15 +11,14 @@ RSpec.describe Table, type: :model do
       let!(:user) { create(:user) }
       let!(:table) { create(:table, resturant: resturant) }
 
-      let!(:reservation) {
+      let!(:reservation) do
         create(:reservation,
-          user: user, table: table, resturant: resturant,
-          start_time: Time.zone.now,
-          duration: 1.5
-        )
-      }
+               user: user, table: table, resturant: resturant,
+               start_time: Time.zone.now,
+               duration: 1.5)
+      end
 
-      subject { table.reserved?(Time.zone.now + 10.minutes)}
+      subject { table.reserved?(Time.zone.now + 10.minutes) }
       it 'is occupied' do
         # be_truthy, be_falsey
         expect(subject).to be_truthy

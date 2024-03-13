@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 RSpec.describe ReserveService do
   describe 'test ReserveService' do
     let!(:resturant) { create(:resturant) }
     let!(:user) { create(:user) }
     let!(:table) { create(:table, resturant: resturant) }
     let!(:today) { Time.now.to_date }
-    let!(:given_time) {
+    let!(:given_time) do
       DateTime.new(
         today.year,
         today.month,
         today.day,
         12
       )
-    }
+    end
 
     subject { ReserveService.new(table, given_time).available_slots }
 

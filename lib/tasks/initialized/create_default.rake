@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :initialized do
   desc 'Create default developers'
   task create_default: :environment do
