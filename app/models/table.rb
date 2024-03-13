@@ -2,7 +2,11 @@ class Table < ApplicationRecord
 	belongs_to :resturant
 	has_many :reservations
 
-	# before_save :check_valid
+	def self.reservations_on_time(time)
+		tables = select { |table| table.reserved?(time) }
+
+		ListService.new(tables, time).list
+	end
 
 	def reserved?(time)
 		reservation = reservations.where('start_time <= ? AND end_time >= ?', time, time)
