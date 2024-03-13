@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 
+  end_time: 
+  party_size: 
+  duration: 1
+
+two:
+  start_time: 
+  end_time: 
+  party_size: 
+  duration: 1
